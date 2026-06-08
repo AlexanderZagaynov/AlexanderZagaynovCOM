@@ -1,0 +1,130 @@
+---
+import LaterTabsLayout from '../../layouts/LaterTabsLayout.astro'
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`
+const path = (value: string) => `${baseUrl}${value.replace(/^\//, '')}`
+const description =
+  'Get support for LaterTabs, including troubleshooting help for saved tab sessions, restore behavior, local storage, and privacy questions.'
+const faqItems = [
+  {
+    question: 'Where are my saved sessions stored?',
+    answer:
+      'Saved sessions are stored locally in your browser using IndexedDB. They are not uploaded to a LaterTabs server.',
+  },
+  {
+    question: 'Why did a Chrome internal page not restore?',
+    answer:
+      'Chrome internal URLs can be saved as metadata, but Chrome does not allow extensions to recreate every internal or unsupported URL.',
+  },
+  {
+    question: 'Does restoring a saved session delete it?',
+    answer:
+      'No. Restoring a session opens the saved tabs but keeps the saved session available until you delete it.',
+  },
+  {
+    question: 'Can LaterTabs read the contents of pages?',
+    answer:
+      'No. LaterTabs does not inject content scripts and does not read page text, DOM contents, screenshots, or form contents.',
+  },
+]
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'LaterTabs Support',
+    url: 'https://alexander-zagaynov.com/latertabs/support/',
+    description,
+    inLanguage: 'en-US',
+    about: {
+      '@type': 'SoftwareApplication',
+      name: 'LaterTabs',
+      applicationCategory: 'BrowserApplication',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'zalex80@gmail.com',
+      contactType: 'customer support',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  },
+]
+---
+
+<LaterTabsLayout title="Support - LaterTabs" description={description} schema={schema}>
+  <section class="lt-page-hero lt-shell">
+    <div>
+      <div class="lt-eyebrow">Support</div>
+      <h1>Help for LaterTabs.</h1>
+      <p class="lt-lead">
+        LaterTabs is intentionally small: save a browser context, find it later,
+        and restore it when you need it again.
+      </p>
+      <div class="lt-actions">
+        <a class="lt-button lt-button-primary" href="mailto:zalex80@gmail.com?subject=LaterTabs%20support">Email support</a>
+        <a class="lt-button lt-button-secondary" href={path('/latertabs/privacy/')}>Privacy policy</a>
+      </div>
+    </div>
+    <aside class="lt-page-aside">
+      <strong>Useful details for support</strong>
+      <p>Include the LaterTabs version, Chrome version, what action you took, and what happened next.</p>
+    </aside>
+  </section>
+
+  <section class="lt-content-grid lt-shell">
+    <div class="lt-support-list">
+      <article class="lt-support-card">
+        <h2>Common questions</h2>
+        {
+          faqItems.map((item, index) => (
+            <details class="lt-faq" open={index === 0}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))
+        }
+      </article>
+
+      <article class="lt-support-card">
+        <h2>Troubleshooting</h2>
+        <div class="lt-notice">
+          <h3>If a session does not restore as expected</h3>
+          <ul>
+            <li>Check whether any tabs were Chrome internal pages or unsupported URLs.</li>
+            <li>Confirm the saved session still appears in the LaterTabs popup.</li>
+            <li>Try restoring one saved window or one tab instead of the full session.</li>
+            <li>Restart Chrome if extension APIs appear stuck.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="lt-support-card">
+        <h2>Contact</h2>
+        <p>
+          Email <a href="mailto:zalex80@gmail.com">zalex80@gmail.com</a> with the
+          LaterTabs version, Chrome version, and a short description of what happened.
+          Please do not include private URLs unless they are necessary to diagnose
+          the issue.
+        </p>
+      </article>
+    </div>
+    <aside class="lt-quick-links">
+      <strong>LaterTabs</strong>
+      <a href={path('/latertabs/')}>Overview</a>
+      <a href={path('/latertabs/privacy/')}>Privacy policy</a>
+      <a href="mailto:zalex80@gmail.com">Email support</a>
+    </aside>
+  </section>
+</LaterTabsLayout>

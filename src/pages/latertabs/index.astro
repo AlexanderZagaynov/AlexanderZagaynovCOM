@@ -1,0 +1,202 @@
+---
+import LaterTabsLayout from '../../layouts/LaterTabsLayout.astro'
+import { chromeWebStoreUrl } from '../../lib/links'
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`
+const path = (value: string) => `${baseUrl}${value.replace(/^\//, '')}`
+const siteUrl = 'https://alexander-zagaynov.com/latertabs/'
+const iconUrl = 'https://alexander-zagaynov.com/assets/icons/latertabs-icon128.png'
+const imageUrl = 'https://alexander-zagaynov.com/assets/promotional/latertabs-marquee-1400x560.png'
+const description =
+  'Search and save open Chrome tabs with LaterTabs, a local-first tab session manager for restoring saved tabs and tab groups later.'
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'LaterTabs',
+    alternateName: 'LaterTabs Chrome Extension',
+    url: siteUrl,
+    inLanguage: 'en-US',
+    publisher: {
+      '@type': 'Person',
+      name: 'Alexander Zagaynov',
+      url: 'https://alexander-zagaynov.com/',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'LaterTabs',
+    applicationCategory: 'BrowserApplication',
+    operatingSystem: 'Chrome',
+    browserRequirements: 'Chrome 114 or later',
+    description,
+    url: siteUrl,
+    installUrl: chromeWebStoreUrl,
+    sameAs: chromeWebStoreUrl,
+    image: imageUrl,
+    screenshot: [
+      'https://alexander-zagaynov.com/assets/screenshots/latertabs-1-save.png',
+      'https://alexander-zagaynov.com/assets/screenshots/latertabs-2-restore.png',
+      'https://alexander-zagaynov.com/assets/screenshots/latertabs-3-search.png',
+    ],
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Alexander Zagaynov',
+    },
+    softwareVersion: '1.0.0',
+    thumbnailUrl: iconUrl,
+  },
+]
+---
+
+<LaterTabsLayout title="LaterTabs - Search and Save Open Chrome Tabs" description={description} schema={schema}>
+  <section class="lt-hero lt-shell">
+    <div>
+      <div class="lt-eyebrow">Chrome tab session manager</div>
+      <h1>LaterTabs</h1>
+      <p class="lt-lead">
+        Search and save open Chrome tabs. Capture today's browser context,
+        search saved sessions by title or URL, and restore tabs when you need
+        them again.
+      </p>
+      <div class="lt-actions">
+        <a class="lt-button lt-button-primary" href={chromeWebStoreUrl}>Add to Chrome</a>
+        <a class="lt-button lt-button-secondary" href={path('/latertabs/privacy/')}>Privacy policy</a>
+      </div>
+      <div class="lt-stats" aria-label="LaterTabs product attributes">
+        <div>
+          <strong>Local</strong>
+          <span>Saved in your browser</span>
+        </div>
+        <div>
+          <strong>Fast</strong>
+          <span>Search by title or URL</span>
+        </div>
+        <div>
+          <strong>Clean</strong>
+          <span>No account or analytics</span>
+        </div>
+      </div>
+    </div>
+    <figure class="lt-hero-visual">
+      <div class="lt-product-frame">
+        <img
+          src={path('/assets/promotional/latertabs-marquee-1400x560.png')}
+          width="1400"
+          height="560"
+          alt="LaterTabs promotional graphic showing browser tabs saved into organized sessions"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="lt-hero-rail" aria-hidden="true">
+        <span>Save window state</span>
+        <span>Restore tab groups</span>
+        <span>Search locally</span>
+      </div>
+    </figure>
+  </section>
+
+  <section class="lt-section lt-shell">
+    <div class="lt-section-header">
+      <div>
+        <div class="lt-section-kicker">Chrome tab manager</div>
+        <h2>Save sessions, restore context, search locally.</h2>
+      </div>
+    </div>
+    <div class="lt-feature-grid">
+      <article class="lt-feature-card">
+        <strong>01</strong>
+        <h3>Save open tabs from the current window or all windows</h3>
+        <p>
+          Capture tab order, titles, URLs, favicons, pinned tabs, active tabs,
+          and Chrome tab group metadata in one local session.
+        </p>
+      </article>
+      <article class="lt-feature-card">
+        <strong>02</strong>
+        <h3>Restore saved tab sessions and Chrome tab groups</h3>
+        <p>
+          Bring back a full saved session, one window, or a single tab. Group
+          titles, colors, and collapsed state are restored where Chrome supports it.
+        </p>
+      </article>
+      <article class="lt-feature-card">
+        <strong>03</strong>
+        <h3>Search saved tabs by title, URL, domain, or group</h3>
+        <p>
+          Find sessions by session name, tab title, URL, domain, or group title
+          without sending the search or saved tabs to a server.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="lt-section lt-shell">
+    <div class="lt-section-header">
+      <div>
+        <div class="lt-section-kicker">In the toolbar</div>
+        <h2>A practical popup for tab-heavy work.</h2>
+      </div>
+    </div>
+    <div class="lt-shot-grid">
+      <figure class="lt-shot">
+        <img
+          src={path('/assets/screenshots/latertabs-1-save.png')}
+          width="501"
+          height="604"
+          alt="LaterTabs popup showing save controls and saved sessions"
+          loading="lazy"
+        />
+        <figcaption>Save the current window or all normal windows.</figcaption>
+      </figure>
+      <figure class="lt-shot">
+        <img
+          src={path('/assets/screenshots/latertabs-2-restore.png')}
+          width="501"
+          height="605"
+          alt="LaterTabs popup showing restore actions for a saved session"
+          loading="lazy"
+        />
+        <figcaption>Restore saved sessions, windows, and tabs.</figcaption>
+      </figure>
+      <figure class="lt-shot">
+        <img
+          src={path('/assets/screenshots/latertabs-3-search.png')}
+          width="487"
+          height="605"
+          alt="LaterTabs popup showing search results for saved sessions"
+          loading="lazy"
+        />
+        <figcaption>Search saved browser context locally.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="lt-section lt-shell">
+    <div class="lt-split">
+      <div>
+        <div class="lt-section-kicker">Data posture</div>
+        <h2>No accounts, analytics, or backend.</h2>
+      </div>
+      <div class="lt-panel">
+        <p>
+          Saved sessions live in your browser's IndexedDB. Small extension
+          settings live in Chrome extension storage. LaterTabs does not send
+          saved sessions, telemetry, analytics, or usage data to external services.
+        </p>
+        <div class="lt-actions">
+          <a class="lt-button lt-button-secondary" href={path('/latertabs/support/')}>Support</a>
+          <a class="lt-button lt-button-secondary" href={path('/latertabs/privacy/')}>Privacy policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</LaterTabsLayout>

@@ -1,0 +1,245 @@
+---
+import AzMark from '../components/AzMark.astro'
+import '../styles/global.css'
+
+interface Props {
+  title: string
+  description: string
+  image?: string
+  imageAlt?: string
+  schema?: Record<string, unknown> | Record<string, unknown>[]
+}
+
+const {
+  title,
+  description,
+  image = '/assets/promotional/latertabs-marquee-1400x560.png',
+  imageAlt = 'LaterTabs promotional graphic showing browser tabs saved into organized sessions',
+  schema = [],
+} = Astro.props
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`
+const path = (value: string) => `${baseUrl}${value.replace(/^\//, '')}`
+const normalizedCurrent = Astro.url.pathname.replace(/\/$/, '') || '/'
+const onHome = normalizedCurrent === '/'
+const homeHref = (hash: string) => (onHome ? hash : path(`/${hash}`))
+const canonical = new URL(Astro.url.pathname, Astro.site).toString()
+const ogImage = new URL(path(image), Astro.site).toString()
+const sitemapUrl = new URL(path('/sitemap-index.xml'), Astro.site).toString()
+const jsonLdItems = Array.isArray(schema) ? schema : [schema]
+const navItems = [
+  { label: 'About', href: homeHref('#about'), match: '/', sectionId: 'about' },
+  { label: 'Projects', href: homeHref('#projects'), match: '/projects', sectionId: 'projects' },
+  { label: 'CV', href: path('/cv/'), match: '/cv' },
+]
+const homeNavScript = `
+(() => {
+  const links = Array.from(document.querySelectorAll('[data-home-section-link]'));
+  const sections = links
+    .map((link) => document.getElementById(link.dataset.homeSectionLink))
+    .filter(Boolean);
+  const snapTargets = Array.from(document.querySelectorAll('.home-section, .site-footer'));
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (!links.length || !sections.length) return;
+
+  const setActive = (id) => {
+    for (const link of links) {
+      link.removeAttribute('aria-current');
+    }
+
+    const activeLink = links.find((link) => link.dataset.homeSectionLink === id);
+    if (activeLink) activeLink.setAttribute('aria-current', 'page');
+  };
+
+  const currentSectionId = () => {
+    const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 0;
+    const sampleY = headerBottom + (window.innerHeight - headerBottom) * 0.42;
+    let active = null;
+
+    for (const section of sections) {
+      const rect = section.getBoundingClientRect();
+
+      if (rect.top <= sampleY && rect.bottom > sampleY) {
+        active = section;
+        break;
+      }
+
+      if (rect.top < sampleY) active = section;
+    }
+
+    return active?.id ?? null;
+  };
+
+  let frame = 0;
+  const update = () => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => setActive(currentSectionId()));
+  };
+
+  const targetScrollTop = (target) => {
+    if (target.classList.contains('site-footer')) {
+      return document.documentElement.scrollHeight - window.innerHeight;
+    }
+
+    return window.scrollY + target.getBoundingClientRect().top;
+  };
+
+  const currentSnapIndex = () => {
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    snapTargets.forEach((target, index) => {
+      const distance = Math.abs(targetScrollTop(target) - window.scrollY);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    return closestIndex;
+  };
+
+  let wheelSnapTimer = 0;
+  let isWheelSnapping = false;
+  const finishWheelSnap = () => {
+    window.clearTimeout(wheelSnapTimer);
+    wheelSnapTimer = window.setTimeout(() => {
+      isWheelSnapping = false;
+      update();
+    }, reduceMotion.matches ? 80 : 720);
+  };
+
+  window.addEventListener('wheel', (event) => {
+    if (!snapTargets.length || event.ctrlKey || Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+
+    const direction = Math.sign(event.deltaY);
+    if (!direction) return;
+
+    if (isWheelSnapping) {
+      event.preventDefault();
+      return;
+    }
+
+    const currentIndex = currentSnapIndex();
+    const nextIndex = Math.max(0, Math.min(snapTargets.length - 1, currentIndex + direction));
+    if (nextIndex === currentIndex) return;
+
+    event.preventDefault();
+    isWheelSnapping = true;
+
+    snapTargets[nextIndex].scrollIntoView({
+      behavior: reduceMotion.matches ? 'auto' : 'smooth',
+      block: snapTargets[nextIndex].classList.contains('site-footer') ? 'end' : 'start',
+    });
+    finishWheelSnap();
+  }, { passive: false });
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(update, {
+      threshold: [0, 0.25, 0.5, 0.75, 1],
+    });
+    for (const section of sections) observer.observe(section);
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  window.addEventListener('hashchange', update);
+  update();
+})();
+`
+---
+
+<!doctype html>
+<html lang="en" class={onHome ? 'home-page' : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#f7f8f5" />
+    <meta name="application-name" content="Alexander Zagaynov" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={path('/favicon.svg')} type="image/svg+xml" />
+    <link rel="sitemap" type="application/xml" href={sitemapUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Alexander Zagaynov" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="560" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    {
+      jsonLdItems.map((item) => (
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />
+      ))
+    }
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Main navigation">
+        <a class="brand" href={path('/')}>
+          <AzMark />
+          <span>Alexander Zagaynov</span>
+        </a>
+        <ul class="nav-links">
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  data-home-section-link={onHome && item.sectionId ? item.sectionId : undefined}
+                  aria-current={
+                    onHome && item.sectionId
+                      ? undefined
+                      : item.match !== '/' && normalizedCurrent.startsWith(item.match)
+                      ? 'page'
+                      : item.match === '/' && normalizedCurrent === '/'
+                        ? 'page'
+                        : undefined
+                  }
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    {
+      onHome && (
+        <script is:inline set:html={homeNavScript} />
+      )
+    }
+
+    <footer class="site-footer">
+      <div class="shell footer-row">
+        <span>© 2026 Alexander Zagaynov. Software engineering and modernization.</span>
+        <div class="footer-links">
+          <a href={path('/cv/')}>CV</a>
+          <a href={path('/latertabs/')}>LaterTabs</a>
+          <a href="mailto:zalex80@gmail.com">Email</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

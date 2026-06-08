@@ -1,0 +1,142 @@
+---
+import LaterTabsLayout from '../../layouts/LaterTabsLayout.astro'
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`
+const path = (value: string) => `${baseUrl}${value.replace(/^\//, '')}`
+const description =
+  'Privacy policy for LaterTabs, a local-first Chrome extension that stores saved tab sessions on your device and does not use analytics or a backend.'
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'LaterTabs Privacy Policy',
+  url: 'https://alexander-zagaynov.com/latertabs/privacy/',
+  datePublished: '2026-05-29',
+  dateModified: '2026-05-29',
+  inLanguage: 'en-US',
+  description,
+  publisher: {
+    '@type': 'Person',
+    name: 'Alexander Zagaynov',
+    email: 'mailto:zalex80@gmail.com',
+  },
+  about: {
+    '@type': 'SoftwareApplication',
+    name: 'LaterTabs',
+    applicationCategory: 'BrowserApplication',
+  },
+}
+---
+
+<LaterTabsLayout title="Privacy Policy - LaterTabs" description={description} schema={schema}>
+  <section class="lt-page-hero lt-shell">
+    <div>
+      <div class="lt-eyebrow">Privacy policy</div>
+      <h1>LaterTabs keeps saved sessions on your device.</h1>
+      <p class="lt-lead">
+        Effective date: May 29, 2026. LaterTabs is a Chrome extension by
+        Alexander Zagaynov for saving and restoring browser tabs and tab groups.
+      </p>
+    </div>
+    <aside class="lt-page-aside">
+      <strong>Local-first by design</strong>
+      <p>No accounts, analytics, backend, external APIs, content scripts, or host permissions.</p>
+    </aside>
+  </section>
+
+  <section class="lt-content-grid lt-shell">
+    <article class="lt-doc-stack">
+      <div class="lt-doc-panel">
+        <h2>Summary</h2>
+        <p>
+          LaterTabs is local-first. It does not use accounts, analytics, a backend,
+          external APIs, content scripts, host permissions, or page-content reading.
+          Saved sessions stay in your browser unless you choose to remove the
+          extension or clear its local data.
+        </p>
+      </div>
+
+      <div class="lt-doc-panel">
+        <h2>Information stored by the extension</h2>
+        <p>
+          LaterTabs stores only the tab and session metadata needed for its core
+          save and restore functionality.
+        </p>
+        <ul>
+          <li>Tab URLs</li>
+          <li>Tab titles</li>
+          <li>Favicon URLs</li>
+          <li>Pinned, active, and order metadata</li>
+          <li>Tab group title, color, and collapsed state</li>
+          <li>Session names and timestamps</li>
+          <li>Small local settings, such as close-after-saving preference</li>
+        </ul>
+      </div>
+
+      <div class="lt-doc-panel">
+        <h2>Where information is stored</h2>
+        <p>
+          Saved sessions are stored locally in IndexedDB in your browser. Small
+          settings are stored locally in <code>chrome.storage.local</code>.
+        </p>
+      </div>
+
+      <div class="lt-doc-panel">
+        <h2>Information LaterTabs does not collect</h2>
+        <ul>
+          <li>Page text or DOM contents</li>
+          <li>Form contents</li>
+          <li>Authentication credentials</li>
+          <li>Personal communications</li>
+          <li>Location data</li>
+          <li>Health, financial, or payment data</li>
+          <li>Analytics identifiers</li>
+        </ul>
+      </div>
+
+      <div class="lt-doc-panel">
+        <h2>Data sharing and transmission</h2>
+        <p>
+          LaterTabs does not transmit saved sessions to any server. It does not sell,
+          rent, share, or transfer user data to third parties. It does not send
+          telemetry or analytics.
+        </p>
+      </div>
+
+      <div class="lt-doc-panel">
+        <h2>Chrome permissions</h2>
+        <p>
+          LaterTabs requests the <code>tabs</code>, <code>tabGroups</code>, and
+          <code>storage</code> permissions. These permissions are used to read tab
+          metadata after user actions, recreate saved tabs and groups during restore,
+          and store local settings.
+        </p>
+      </div>
+
+      <div class="lt-doc-panel">
+        <h2>Removing data</h2>
+        <p>
+          You can delete saved sessions inside the extension. You can also remove
+          all extension data by uninstalling LaterTabs from Chrome or clearing the
+          extension's site data through Chrome settings.
+        </p>
+      </div>
+
+      <div class="lt-doc-panel">
+        <h2>Contact</h2>
+        <p>
+          For privacy questions, contact
+          <a href="mailto:zalex80@gmail.com">zalex80@gmail.com</a>.
+        </p>
+      </div>
+    </article>
+
+    <aside class="lt-quick-links">
+      <strong>Policy sections</strong>
+      <a href={path('/latertabs/')}>Overview</a>
+      <a href={path('/latertabs/support/')}>Support</a>
+      <a href="mailto:zalex80@gmail.com">Privacy contact</a>
+    </aside>
+  </section>
+</LaterTabsLayout>

@@ -1,0 +1,144 @@
+---
+import { cvPdfPath, githubUrl, linkedInUrl } from '../lib/links'
+
+interface Props {
+  showPageLink?: boolean
+}
+
+const { showPageLink = true } = Astro.props
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`
+const path = (value: string) => `${baseUrl}${value.replace(/^\//, '')}`
+
+const skills = [
+  ['Languages', 'Ruby, Python, Java, Kotlin, JavaScript, SQL, Bash'],
+  ['Frameworks', 'Ruby on Rails, Spring Boot, Vue.js'],
+  ['Cloud & DevOps', 'Azure, AWS, GCP, Kubernetes, Docker, Terraform, Ansible, Azure DevOps, Jenkins'],
+  ['Data & Messaging', 'PostgreSQL, MongoDB, Redis, Kafka, RabbitMQ, REST, GraphQL, SOAP'],
+  ['Security & Quality', 'Microsoft Entra ID, TLS/PKI, SonarQube, Veracode'],
+]
+
+const experience = [
+  {
+    role: 'Lead Software Engineer',
+    company: 'AT&T',
+    period: 'Oct 2023 - Present',
+    details: [
+      'Lead modernization and support of 2 large enterprise applications (Java/Kotlin + Vue.js) and about 10 supporting services.',
+      'Migrated systems from Spring Boot 2 to 4 and Vue 2 to 3, reducing technical debt and improving maintainability.',
+      'Integrated Microsoft Entra ID, strengthened TLS/internal CA/WAF security, integrated SonarQube and Veracode, and implemented CI/CD pipelines in Azure DevOps.',
+    ],
+  },
+  {
+    role: 'Lead Software Engineer',
+    company: 'EPAM Systems',
+    period: 'Apr 2020 - May 2023',
+    details: [
+      'Worked with a European banking platform and live banks in high-load environments.',
+      'Resolved critical production incidents across Ruby and Java microservices, including performance improvements up to 100x.',
+      'Delivered PSD2 integrations across REST, SOAP, and messaging; modernized services and CI/CD pipelines; collaborated with SRE/ops and mentored engineers.',
+    ],
+  },
+  {
+    role: 'Software Engineer',
+    company: 'Red Hat',
+    period: 'Dec 2016 - Jan 2020',
+    details: [
+      'Contributed to OpenShift QE and ManageIQ hybrid cloud platform development.',
+      'Built test frameworks, led AWS STS integration, upgraded SDKs, and contributed to AWS, Azure, and GCP cloud integrations.',
+      'Worked as an active open-source contributor across code, reviews, and upstream collaboration.',
+    ],
+  },
+  {
+    role: 'Full-Stack Engineer',
+    company: 'Mamapedia',
+    period: '2015 - 2016',
+    details: [
+      'Modernized a legacy Rails platform, improved performance by about 2x, and rebuilt the email delivery system.',
+    ],
+  },
+  {
+    role: 'ERP & Infrastructure Consultant',
+    company: 'Independent and client work',
+    period: '1998 - 2014',
+    details: [
+      'Delivered ERP, WMS, CRM, and enterprise infrastructure solutions across multiple industries, including custom business platforms and data-center modernization projects.',
+    ],
+  },
+]
+---
+
+<div class="cv-document">
+  <header class="cv-heading">
+    <div>
+      <h2>Alexander Zagaynov</h2>
+      <p>
+        Lead Software Engineer with 25+ years of experience building and
+        modernizing production systems across enterprise, fintech, and cloud
+        environments.
+      </p>
+    </div>
+    <div class="cv-actions">
+      <a class="button primary" href={path(cvPdfPath)} download>Download PDF</a>
+      {showPageLink && <a class="button" href={path('/cv/')}>Open CV page</a>}
+    </div>
+  </header>
+
+  <section class="cv-block" aria-labelledby="cv-contact">
+    <h3 id="cv-contact">Contact</h3>
+    <ul class="inline-list">
+      <li><a href="mailto:zalex80@gmail.com">zalex80@gmail.com</a></li>
+      <li><a href="tel:+420775282001">+420 775 282 001</a></li>
+      <li><a href={linkedInUrl}>LinkedIn</a></li>
+      <li><a href={githubUrl}>GitHub</a></li>
+    </ul>
+  </section>
+
+  <section class="cv-block" aria-labelledby="cv-skills">
+    <h3 id="cv-skills">Core Skills</h3>
+    <dl class="skill-list">
+      {
+        skills.map(([label, value]) => (
+          <>
+            <dt>{label}</dt>
+            <dd>{value}</dd>
+          </>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="cv-block" aria-labelledby="cv-certifications">
+    <h3 id="cv-certifications">Certifications</h3>
+    <p>
+      Azure Administrator Associate (2025), Azure AI Fundamentals (2023), AWS
+      Certified Solutions Architect - Associate (2021), RHCE (2017), RHCSA
+      (2017), Ansible (2017).
+    </p>
+  </section>
+
+  <section class="cv-block" aria-labelledby="cv-experience">
+    <h3 id="cv-experience">Experience</h3>
+    <div class="timeline">
+      {
+        experience.map((item) => (
+          <article class="timeline-item">
+            <div>
+              <h4>{item.role} · {item.company}</h4>
+              <p>{item.period}</p>
+            </div>
+            <ul>
+              {item.details.map((detail) => <li>{detail}</li>)}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="cv-block" aria-labelledby="cv-development">
+    <h3 id="cv-development">Professional Development</h3>
+    <p>IT Project Management, I Heart Stats (Notre Dame, edX), Entrepreneurship 101 (edX).</p>
+  </section>
+</div>

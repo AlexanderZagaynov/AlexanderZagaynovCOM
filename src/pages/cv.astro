@@ -1,0 +1,34 @@
+---
+import CvHtml from '../components/CvHtml.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { contactEmail, cvPdfPath, githubUrl, linkedInUrl } from '../lib/links'
+
+const description =
+  'HTML CV for Alexander Zagaynov, lead software engineer focused on enterprise modernization, cloud systems, reliability, security, and CI/CD.'
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  name: 'Alexander Zagaynov CV',
+  url: 'https://alexander-zagaynov.com/cv/',
+  inLanguage: 'en-US',
+  about: {
+    '@type': 'Person',
+    name: 'Alexander Zagaynov',
+    email: `mailto:${contactEmail}`,
+    sameAs: [linkedInUrl, githubUrl],
+    jobTitle: 'Lead Software Engineer',
+  },
+  mainEntity: {
+    '@type': 'DigitalDocument',
+    name: 'Alexander Zagaynov CV 2026-04',
+    encodingFormat: 'application/pdf',
+    url: `https://alexander-zagaynov.com${cvPdfPath}`,
+  },
+}
+---
+
+<BaseLayout title="CV - Alexander Zagaynov" description={description} schema={schema}>
+  <section class="section shell">
+    <CvHtml showPageLink={false} />
+  </section>
+</BaseLayout>

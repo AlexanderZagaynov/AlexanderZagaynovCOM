@@ -1,0 +1,123 @@
+---
+import { chromeWebStoreUrl } from '../lib/links'
+import '../styles/latertabs.css'
+
+interface Props {
+  title: string
+  description: string
+  image?: string
+  imageAlt?: string
+  schema?: Record<string, unknown> | Record<string, unknown>[]
+}
+
+const {
+  title,
+  description,
+  image = '/assets/promotional/latertabs-marquee-1400x560.png',
+  imageAlt = 'LaterTabs promotional graphic showing browser tabs saved into organized sessions',
+  schema = [],
+} = Astro.props
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`
+const path = (value: string) => `${baseUrl}${value.replace(/^\//, '')}`
+const canonical = new URL(Astro.url.pathname, Astro.site).toString()
+const ogImage = new URL(path(image), Astro.site).toString()
+const sitemapUrl = new URL(path('/sitemap-index.xml'), Astro.site).toString()
+const normalizedCurrent = Astro.url.pathname.replace(/\/$/, '') || '/'
+const jsonLdItems = Array.isArray(schema) ? schema : [schema]
+const navItems = [
+  { label: 'Overview', href: path('/latertabs/'), match: '/latertabs' },
+  { label: 'Support', href: path('/latertabs/support/'), match: '/latertabs/support' },
+  { label: 'Privacy', href: path('/latertabs/privacy/'), match: '/latertabs/privacy' },
+]
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0f1815" />
+    <meta name="application-name" content="LaterTabs" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={path('/assets/icons/latertabs-icon128.png')} type="image/png" />
+    <link rel="sitemap" type="application/xml" href={sitemapUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="LaterTabs" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="560" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    {
+      jsonLdItems.map((item) => (
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />
+      ))
+    }
+  </head>
+  <body>
+    <a class="lt-skip-link" href="#main">Skip to content</a>
+    <header class="lt-header">
+      <nav class="lt-nav lt-shell" aria-label="LaterTabs navigation">
+        <a class="lt-brand" href={path('/latertabs/')} aria-label="LaterTabs home">
+          <img src={path('/assets/icons/latertabs-icon128.png')} width="128" height="128" alt="" />
+          <span>LaterTabs</span>
+        </a>
+        <ul class="lt-nav-links">
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={
+                    item.match === '/latertabs'
+                      ? normalizedCurrent === item.match
+                        ? 'page'
+                        : undefined
+                      : normalizedCurrent.startsWith(item.match)
+                        ? 'page'
+                        : undefined
+                  }
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <a class="lt-store-link" href={chromeWebStoreUrl}>Add to Chrome</a>
+      </nav>
+    </header>
+
+    <main id="main" class="lt-main">
+      <slot />
+    </main>
+
+    <footer class="lt-footer">
+      <div class="lt-shell lt-footer-grid">
+        <div>
+          <strong>LaterTabs</strong>
+          <p>Local-first tab session manager for Chrome.</p>
+        </div>
+        <nav aria-label="LaterTabs footer navigation">
+          <a href={path('/latertabs/support/')}>Support</a>
+          <a href={path('/latertabs/privacy/')}>Privacy</a>
+          <a href="mailto:zalex80@gmail.com">Contact</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
