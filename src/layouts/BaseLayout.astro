@@ -1,5 +1,6 @@
 ---
 import AzMark from '../components/AzMark.astro'
+import GoogleTag from '../components/GoogleTag.astro'
 import '../styles/global.css'
 
 interface Props {
@@ -29,6 +30,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString()
 const ogImage = new URL(path(image), Astro.site).toString()
 const sitemapUrl = new URL(path('/sitemap-index.xml'), Astro.site).toString()
 const jsonLdItems = Array.isArray(schema) ? schema : [schema]
+const googleTagId = 'G-9Y7M4XS20J'
 const navItems = [
   { label: 'About', href: homeHref('#about'), match: '/', sectionId: 'about' },
   { label: 'Projects', href: homeHref('#projects'), match: '/projects', sectionId: 'projects' },
@@ -163,6 +165,7 @@ const homeNavScript = `
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#f7f8f5" />
     <meta name="application-name" content="Alexander Zagaynov" />
+    <GoogleTag measurementId={googleTagId} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={path('/favicon.svg')} type="image/svg+xml" />
     <link rel="sitemap" type="application/xml" href={sitemapUrl} />

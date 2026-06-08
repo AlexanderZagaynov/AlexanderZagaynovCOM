@@ -1,4 +1,5 @@
 ---
+import GoogleTag from '../components/GoogleTag.astro'
 import { chromeWebStoreUrl } from '../lib/links'
 import '../styles/latertabs.css'
 
@@ -27,6 +28,7 @@ const ogImage = new URL(path(image), Astro.site).toString()
 const sitemapUrl = new URL(path('/sitemap-index.xml'), Astro.site).toString()
 const normalizedCurrent = Astro.url.pathname.replace(/\/$/, '') || '/'
 const jsonLdItems = Array.isArray(schema) ? schema : [schema]
+const googleTagId = 'G-R7HNEJ253E'
 const navItems = [
   { label: 'Overview', href: path('/latertabs/'), match: '/latertabs' },
   { label: 'Support', href: path('/latertabs/support/'), match: '/latertabs/support' },
@@ -44,6 +46,7 @@ const navItems = [
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#0f1815" />
     <meta name="application-name" content="LaterTabs" />
+    <GoogleTag measurementId={googleTagId} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={path('/assets/icons/latertabs-icon128.png')} type="image/png" />
     <link rel="sitemap" type="application/xml" href={sitemapUrl} />
