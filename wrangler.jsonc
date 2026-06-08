@@ -1,0 +1,24 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "alexander-zagaynov-com",
+  "account_id": "a20362f284603ab13904e01554a51585",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-06-08",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    {
+      "pattern": "alexander-zagaynov.com/*",
+      "zone_name": "alexander-zagaynov.com"
+    },
+    {
+      "pattern": "alexanderzagaynov.com/*",
+      "zone_name": "alexanderzagaynov.com"
+    }
+  ]
+}
