@@ -1,6 +1,7 @@
 ---
 import AzMark from '../components/AzMark.astro'
 import GoogleTag from '../components/GoogleTag.astro'
+import { pathWithTrailingSlash } from '../lib/links'
 import '../styles/global.css'
 
 interface Props {
@@ -26,7 +27,7 @@ const path = (value: string) => `${baseUrl}${value.replace(/^\//, '')}`
 const normalizedCurrent = Astro.url.pathname.replace(/\/$/, '') || '/'
 const onHome = normalizedCurrent === '/'
 const homeHref = (hash: string) => (onHome ? hash : path(`/${hash}`))
-const canonical = new URL(Astro.url.pathname, Astro.site).toString()
+const canonical = new URL(pathWithTrailingSlash(Astro.url.pathname), Astro.site).toString()
 const ogImage = new URL(path(image), Astro.site).toString()
 const sitemapUrl = new URL(path('/sitemap-index.xml'), Astro.site).toString()
 const jsonLdItems = Array.isArray(schema) ? schema : [schema]
