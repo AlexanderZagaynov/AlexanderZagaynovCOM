@@ -6,6 +6,7 @@ import {
   contactEmail,
   githubUrl,
   linkedInUrl,
+  raspberryPlayerUrl,
 } from '../lib/links'
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
@@ -176,6 +177,24 @@ const schema = [
         <img src={path('/assets/screenshots/latertabs-3-search.png')} width="487" height="605"
           alt="LaterTabs popup with a saved-session search and controls to restore browser tabs" loading="lazy" />
         <figcaption>The actual extension. Your sessions stay in your browser.</figcaption>
+      </figure>
+    </article>
+    <article class="project-layout" aria-labelledby="raspberry-player-title">
+      <div class="project-description">
+        <h3 id="raspberry-player-title">Raspberry Player</h3>
+        <p>Your media. On the big screen.</p>
+        <p>A Rust media browser for Raspberry Pi, with native VLC playback,
+          projectM music visualization, and remote control over HDMI-CEC or HTTPS.</p>
+        <p class="project-principle">Built for Raspberry Pi OS Lite, Wayland, and Cage.</p>
+        <div class="action-row">
+          <a class="text-link" href={raspberryPlayerUrl}>View on GitHub <DirectionArrow /></a>
+          <a class="text-link" href={`${raspberryPlayerUrl}/blob/main/docs/features.md`}>Features &amp; screenshots <DirectionArrow /></a>
+        </div>
+      </div>
+      <figure class="product-preview product-preview-landscape">
+        <img src={path('/assets/screenshots/raspberry-player-library.webp')} width="1920" height="1080"
+          alt="Raspberry Player’s fullscreen media browser with folders, a selected item, and keyboard controls" loading="lazy" />
+        <figcaption>Running on Raspberry Pi 4. Demonstration media library.</figcaption>
       </figure>
     </article>
   </section>

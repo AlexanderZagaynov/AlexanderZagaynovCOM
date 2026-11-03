@@ -116,6 +116,7 @@ h1 { font-size: clamp(40px, 4.3vw, 64px); line-height: 1.12; letter-spacing: -0.
 .selected-work { border-block-start: 1px solid var(--line); }
 .section-note { color: var(--muted); font-size: 13px; }
 .project-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 70px; align-items: center; }
+.project-layout + .project-layout { margin-block-start: 48px; padding-block-start: 48px; border-block-start: 1px solid var(--line); }
 .project-description h3 { font-size: 38px; letter-spacing: -0.03em; font-weight: 600; margin-block: 18px 8px; }
 .project-description > p:first-of-type { font-size: 21px; color: var(--ink); }
 .project-description p { margin-block-start: 14px; color: var(--muted); max-inline-size: 44ch; }
@@ -123,6 +124,7 @@ h1 { font-size: clamp(40px, 4.3vw, 64px); line-height: 1.12; letter-spacing: -0.
 .project-description .action-row { gap: 8px 22px; }
 .product-preview { background: #e8ece8; margin: 0; padding: 32px 28px 22px; display: grid; justify-items: center; gap: 20px; }
 .product-preview img { inline-size: min(290px, 100%); border-radius: 12px; box-shadow: 0 14px 32px rgb(32 44 38 / 12%); }
+.product-preview-landscape img { inline-size: 100%; }
 .product-preview figcaption { font-size: 12px; color: var(--muted); text-align: center; text-wrap: balance; }
 .contact-section { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 30px 50px; padding-block: 52px; border-block-start: 1px solid var(--line); }
 .contact-section h2 { font-size: clamp(30px, 3vw, 40px); font-weight: 600; letter-spacing: -0.03em; }

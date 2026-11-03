@@ -17,6 +17,15 @@
       "use": "Actual LaterTabs interface screenshot",
       "sha256": "07cf7a6c2219788c4675ecff5e1327c2c79f1eeb866f7b84879ae72dc43b67cf",
       "license": "Existing repository asset; no new license or authorship claim established by this work."
+    },
+    {
+      "path": "public/assets/screenshots/raspberry-player-library.webp",
+      "provenance": "Existing public project documentation screenshot, copied without modification.",
+      "source": "https://github.com/AlexanderZagaynov/raspberry-player/blob/main/docs/images/features/library.webp",
+      "use": "Raspberry Player media-browser demonstration on the homepage",
+      "sha256": "419d90be26889daab889495d9dc280ae59617a16530167905852e5857194f2b3",
+      "license": "Project-owned demonstration capture. Preserve source provenance and the font notice referenced by docs/asset-sources.md#player-font in the source project.",
+      "credits": "https://github.com/AlexanderZagaynov/raspberry-player/blob/main/docs/asset-sources.md#documentation-screenshots"
     }
   ],
   "fonts": {
