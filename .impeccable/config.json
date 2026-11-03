@@ -21,6 +21,15 @@
         ],
         "createdAt": "2026-11-03T21:20:14.334Z",
         "reason": "Existing LaterTabs identity: DESIGN.md explicitly scopes the new type system to the homepage; analytics removal does not redesign LaterTabs."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/styles/latertabs.css"
+        ],
+        "createdAt": "2026-11-03T21:21:16.745Z",
+        "reason": "Pre-existing .lt-notice marks the support Troubleshooting block. The homepage-only redesign and LaterTabs analytics removal intentionally preserve this separate functional notice styling."
       }
     ]
   }
