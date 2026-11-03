@@ -1,0 +1,7 @@
+---
+interface Props { down?: boolean }
+const { down = false } = Astro.props
+---
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+  {down ? <path d="M5 5 19 19M7 19h12V7" /> : <path d="m5 19 14-14M7 5h12v12" />}
+</svg>

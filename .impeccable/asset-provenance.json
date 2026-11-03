@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "scope": "Homepage replacement; development-only provenance record.",
+  "assets": [
+    {
+      "path": "public/assets/icons/latertabs-icon128.png",
+      "provenance": "Pre-existing repository asset, reused without modification.",
+      "source": "Tracked repository file present before the homepage replacement.",
+      "use": "LaterTabs product identity",
+      "sha256": "6124f42910afed027afae71f69383b10b7325bf0a070b2685930fb101c0f979b",
+      "license": "Existing repository asset; no new license or authorship claim established by this work."
+    },
+    {
+      "path": "public/assets/screenshots/latertabs-3-search.png",
+      "provenance": "Pre-existing repository asset, reused without modification.",
+      "source": "Tracked repository file present before the homepage replacement.",
+      "use": "Actual LaterTabs interface screenshot",
+      "sha256": "07cf7a6c2219788c4675ecff5e1327c2c79f1eeb866f7b84879ae72dc43b67cf",
+      "license": "Existing repository asset; no new license or authorship claim established by this work."
+    }
+  ],
+  "fonts": {
+    "source": "Self-hosted Fontsource variable Manrope and Public Sans dependencies imported by src/layouts/HomeLayout.astro.",
+    "licenses": "Preserved in the dependency packages; not copied into application assets."
+  },
+  "generatedImagery": false
+}

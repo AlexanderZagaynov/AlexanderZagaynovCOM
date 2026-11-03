@@ -1,0 +1,27 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "aptos",
+        "files": [
+          "src/styles/latertabs.css"
+        ],
+        "createdAt": "2026-11-03T21:20:14.324Z",
+        "reason": "Existing LaterTabs identity: DESIGN.md explicitly scopes the new type system to the homepage; analytics removal does not redesign LaterTabs."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "georgia",
+        "files": [
+          "src/styles/latertabs.css"
+        ],
+        "createdAt": "2026-11-03T21:20:14.334Z",
+        "reason": "Existing LaterTabs identity: DESIGN.md explicitly scopes the new type system to the homepage; analytics removal does not redesign LaterTabs."
+      }
+    ]
+  }
+}

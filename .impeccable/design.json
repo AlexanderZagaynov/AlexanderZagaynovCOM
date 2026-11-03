@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T21:15:57.946345+00:00",
+  "title": "Design System: Alexander Zagaynov \u2014 Homepage",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0.0082 91.48)",
+          "oklch(26% 0.0082 91.48)",
+          "oklch(38% 0.0082 91.48)",
+          "oklch(49% 0.0082 91.48)",
+          "oklch(61% 0.0082 91.48)",
+          "oklch(72% 0.0082 91.48)",
+          "oklch(84% 0.0082 91.48)",
+          "oklch(95% 0.0082 91.48)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0198 163.12)",
+          "oklch(26% 0.0198 163.12)",
+          "oklch(38% 0.0198 163.12)",
+          "oklch(49% 0.0198 163.12)",
+          "oklch(61% 0.0198 163.12)",
+          "oklch(72% 0.0198 163.12)",
+          "oklch(84% 0.0198 163.12)",
+          "oklch(95% 0.0198 163.12)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0235 154.34)",
+          "oklch(26% 0.0235 154.34)",
+          "oklch(38% 0.0235 154.34)",
+          "oklch(49% 0.0235 154.34)",
+          "oklch(61% 0.0235 154.34)",
+          "oklch(72% 0.0235 154.34)",
+          "oklch(84% 0.0235 154.34)",
+          "oklch(95% 0.0235 154.34)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "tonalRamp": [
+          "oklch(15% 0.0156 123.08)",
+          "oklch(26% 0.0156 123.08)",
+          "oklch(38% 0.0156 123.08)",
+          "oklch(49% 0.0156 123.08)",
+          "oklch(61% 0.0156 123.08)",
+          "oklch(72% 0.0156 123.08)",
+          "oklch(84% 0.0156 123.08)",
+          "oklch(95% 0.0156 123.08)"
+        ]
+      },
+      "forest": {
+        "role": "primary",
+        "displayName": "Forest",
+        "tonalRamp": [
+          "oklch(15% 0.0604 158.05)",
+          "oklch(26% 0.0604 158.05)",
+          "oklch(38% 0.0604 158.05)",
+          "oklch(49% 0.0604 158.05)",
+          "oklch(61% 0.0604 158.05)",
+          "oklch(72% 0.0604 158.05)",
+          "oklch(84% 0.0604 158.05)",
+          "oklch(95% 0.0604 158.05)"
+        ]
+      },
+      "forest-hover": {
+        "role": "primary",
+        "displayName": "Forest Hover",
+        "tonalRamp": [
+          "oklch(15% 0.0538 157.45)",
+          "oklch(26% 0.0538 157.45)",
+          "oklch(38% 0.0538 157.45)",
+          "oklch(49% 0.0538 157.45)",
+          "oklch(61% 0.0538 157.45)",
+          "oklch(72% 0.0538 157.45)",
+          "oklch(84% 0.0538 157.45)",
+          "oklch(95% 0.0538 157.45)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "tonalRamp": [
+          "oklch(15% 0.0000 0.00)",
+          "oklch(26% 0.0000 0.00)",
+          "oklch(38% 0.0000 0.00)",
+          "oklch(49% 0.0000 0.00)",
+          "oklch(61% 0.0000 0.00)",
+          "oklch(72% 0.0000 0.00)",
+          "oklch(84% 0.0000 0.00)",
+          "oklch(95% 0.0000 0.00)"
+        ]
+      },
+      "evidence": {
+        "role": "neutral",
+        "displayName": "Evidence",
+        "tonalRamp": [
+          "oklch(15% 0.0156 126.83)",
+          "oklch(26% 0.0156 126.83)",
+          "oklch(38% 0.0156 126.83)",
+          "oklch(49% 0.0156 126.83)",
+          "oklch(61% 0.0156 126.83)",
+          "oklch(72% 0.0156 126.83)",
+          "oklch(84% 0.0156 126.83)",
+          "oklch(95% 0.0156 126.83)"
+        ]
+      },
+      "evidence-border": {
+        "role": "neutral",
+        "displayName": "Evidence Border",
+        "tonalRamp": [
+          "oklch(15% 0.0181 131.90)",
+          "oklch(26% 0.0181 131.90)",
+          "oklch(38% 0.0181 131.90)",
+          "oklch(49% 0.0181 131.90)",
+          "oklch(61% 0.0181 131.90)",
+          "oklch(72% 0.0181 131.90)",
+          "oklch(84% 0.0181 131.90)",
+          "oklch(95% 0.0181 131.90)"
+        ]
+      },
+      "evidence-text": {
+        "role": "neutral",
+        "displayName": "Evidence Text",
+        "tonalRamp": [
+          "oklch(15% 0.0358 147.84)",
+          "oklch(26% 0.0358 147.84)",
+          "oklch(38% 0.0358 147.84)",
+          "oklch(49% 0.0358 147.84)",
+          "oklch(61% 0.0358 147.84)",
+          "oklch(72% 0.0358 147.84)",
+          "oklch(84% 0.0358 147.84)",
+          "oklch(95% 0.0358 147.84)"
+        ]
+      },
+      "evidence-rule": {
+        "role": "neutral",
+        "displayName": "Evidence Rule",
+        "tonalRamp": [
+          "oklch(15% 0.0252 135.71)",
+          "oklch(26% 0.0252 135.71)",
+          "oklch(38% 0.0252 135.71)",
+          "oklch(49% 0.0252 135.71)",
+          "oklch(61% 0.0252 135.71)",
+          "oklch(72% 0.0252 135.71)",
+          "oklch(84% 0.0252 135.71)",
+          "oklch(95% 0.0252 135.71)"
+        ]
+      },
+      "preview": {
+        "role": "neutral",
+        "displayName": "Preview",
+        "tonalRamp": [
+          "oklch(15% 0.0068 145.52)",
+          "oklch(26% 0.0068 145.52)",
+          "oklch(38% 0.0068 145.52)",
+          "oklch(49% 0.0068 145.52)",
+          "oklch(61% 0.0068 145.52)",
+          "oklch(72% 0.0068 145.52)",
+          "oklch(84% 0.0068 145.52)",
+          "oklch(95% 0.0068 145.52)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Homepage introduction."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Career contribution headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Text actions."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Compact CV actions."
+      }
+    },
+    "shadows": [
+      {
+        "name": "product-screenshot",
+        "value": "0 14px 32px rgb(32 44 38 / 12%)",
+        "purpose": "Only the actual product screenshot."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state",
+        "value": "160ms ease-out",
+        "purpose": "Color and evidence-arrow transitions."
+      },
+      {
+        "name": "rule-entry",
+        "value": "700ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "One evidence rule expansion, disabled for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "1050px"
+      },
+      {
+        "name": "single-column",
+        "value": "760px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary CV action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CV link styled as a compact action.",
+      "html": "<a class=\"ds-primary\" href=\"#cv\">View my CV <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m5 19 14-14M7 5h12v12\"/></svg></a>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:48px;padding:0 22px;border:1px solid;border-radius:var(--radius-field,.25rem);font:600 14px \"Public Sans Variable\",sans-serif;text-decoration:none;transition:background-color 160ms ease-out,color 160ms ease-out;background:var(--accent,#335c45);color:#fff;border-color:var(--accent,#335c45);} .ds-primary:hover{background:#274a36;color:#fff;} .ds-primary:focus-visible{outline:3px solid var(--accent,#335c45);outline-offset:5px} .ds-primary svg{width:18px;height:18px;} @media(prefers-reduced-motion:reduce){.ds-primary{transition:none;}}"
+    },
+    {
+      "name": "Secondary CV action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "CV link styled as a compact action.",
+      "html": "<a class=\"ds-secondary\" href=\"#cv\">View my CV <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m5 19 14-14M7 5h12v12\"/></svg></a>",
+      "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:48px;padding:0 22px;border:1px solid;border-radius:var(--radius-field,.25rem);font:600 14px \"Public Sans Variable\",sans-serif;text-decoration:none;transition:background-color 160ms ease-out,color 160ms ease-out;background:var(--color-base-200,#e5eadf);color:var(--ink,#202c26);border-color:var(--color-base-300,#c8cfc3);} .ds-secondary:hover{background:var(--color-base-300,#c8cfc3);color:var(--ink,#202c26);} .ds-secondary:focus-visible{outline:3px solid var(--accent,#335c45);outline-offset:5px} .ds-secondary svg{width:18px;height:18px;} @media(prefers-reduced-motion:reduce){.ds-secondary{transition:none;}}"
+    },
+    {
+      "name": "Text action",
+      "kind": "custom",
+      "refersTo": "text-link",
+      "description": "Underlined contact or project link with a directional SVG.",
+      "html": "<a class=\"ds-text\" href=\"#contact\">Get in touch <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m5 19 14-14M7 5h12v12\"/></svg></a>",
+      "css": ".ds-text{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--ink,#202c26);font:550 14px/1.65 \"Public Sans Variable\",sans-serif;text-decoration:underline;text-underline-offset:.24em;text-decoration-thickness:1px}.ds-text:hover{color:var(--accent,#335c45)}.ds-text:focus-visible{outline:3px solid var(--accent,#335c45);outline-offset:5px} .ds-text svg{width:18px;height:18px} "
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Open, wrapping text navigation.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Example navigation\"><a href=\"#work\">Selected work</a><a href=\"#experience\">Experience</a><a href=\"#cv\">CV</a></nav>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:24px;font:400 14px/1.65 \"Public Sans Variable\",sans-serif;color:var(--ink,#202c26)}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-decoration:none}.ds-nav a:hover{color:var(--accent,#335c45)}.ds-nav a:focus-visible{outline:3px solid var(--accent,#335c45);outline-offset:5px} @media(max-width:760px){.ds-nav{width:100%;justify-content:space-between;gap:16px}}"
+    },
+    {
+      "name": "Evidence index",
+      "kind": "custom",
+      "refersTo": "evidence-index",
+      "description": "A tinted field containing native links to professional evidence.",
+      "html": "<aside class=\"ds-evidence\"><h2>A few things<br>I\u2019ve worked on.</h2><a href=\"#att\"><span class=\"ds-company\">AT&amp;T</span><strong>Modernizing enterprise applications</strong><small>Spring Boot 2 \u2192 4 \u00b7 Vue 2 \u2192 3</small><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M5 5 19 19M7 19h12V7\"/></svg></a></aside>",
+      "css": ".ds-evidence{padding:30px 32px 8px;background:var(--color-base-200,#e5eadf);color:var(--ink,#202c26);font-family:\"Public Sans Variable\",sans-serif}.ds-evidence:before{content:\"\";display:block;width:54px;height:3px;background:var(--accent,#335c45);margin-bottom:22px;transform-origin:left;animation:ds-rule 700ms cubic-bezier(.16,1,.3,1) both}.ds-evidence h2{font:600 27px/1.25 \"Manrope Variable\",sans-serif;letter-spacing:-.025em;margin:0 0 23px}.ds-evidence a{display:block;position:relative;padding:18px 28px 20px 0;border-top:1px solid #b8c3b3;color:inherit;text-decoration:none;transition:color 160ms ease-out}.ds-company{display:block;font-size:12px;font-weight:650;color:#4b5e4d;margin-bottom:4px}.ds-evidence strong{display:block;font-size:15px;line-height:1.4;font-weight:600}.ds-evidence small{display:block;margin-top:7px;font-size:12px;color:#4b5e4d}.ds-evidence svg{position:absolute;right:0;top:38px;width:18px;height:18px;transition:transform 160ms ease-out}.ds-evidence a:hover{color:var(--accent,#335c45)}.ds-evidence a:hover svg{transform:translate(2px,2px)}.ds-evidence a:focus-visible{outline:3px solid var(--accent,#335c45);outline-offset:5px} @keyframes ds-rule{from{transform:scaleX(.2)}to{transform:scaleX(1)}} @media(max-width:1050px){.ds-evidence{padding-inline:24px}} @media(prefers-reduced-motion:reduce){.ds-evidence:before{animation:none}.ds-evidence a,.ds-evidence svg{transition:none}}"
+    },
+    {
+      "name": "Career row",
+      "kind": "custom",
+      "refersTo": "experience-row",
+      "description": "Open ruled career context and contribution pair.",
+      "html": "<article class=\"ds-career\" id=\"career-example\"><div><h3>AT&amp;T</h3><p>Lead Software Engineer</p></div><div><h4>Modernization with production in mind.</h4><p>Hands-on modernization and support of enterprise applications.</p></div></article>",
+      "css": ".ds-career{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:70px;padding:36px 0 40px;border-top:1px solid var(--line,#ccd0c5);color:var(--muted,#526056);font:400 15px/1.65 \"Public Sans Variable\",sans-serif}.ds-career h3,.ds-career h4{color:var(--ink,#202c26);font-family:\"Manrope Variable\",sans-serif;margin:0}.ds-career h3{font-size:21px;font-weight:650;margin-bottom:6px}.ds-career h4{font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:12px}.ds-career p{margin:0;max-width:74ch}.ds-career:target{background:#e5eadf66}@media(max-width:1050px){.ds-career{gap:36px}}@media(max-width:760px){.ds-career{grid-template-columns:1fr;gap:24px;padding-block:26px 30px}.ds-career h3{font-size:20px}.ds-career h4{font-size:19px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Engineering dossier",
+    "overview": "Engineering dossier: warm paper, forest ink, measured typography, and open ruled rows. The system gives professional evidence enough structure to scan without turning each fact into a floating card.\n\nThis reference applies only to the homepage rendered by `src/layouts/HomeLayout.astro`. The CV and LaterTabs routes retain independent styles. The source of truth is `src/styles/home.css`; the approved surface composition lives in [.impeccable/surfaces/src-pages-index-astro.md](.impeccable/surfaces/src-pages-index-astro.md).",
+    "keyCharacteristics": [
+      "Warm neutral canvas with a restrained forest accent.",
+      "Manrope headings paired with Public Sans reading text.",
+      "Open ruled evidence, compact controls, and native anchor navigation."
+    ],
+    "rules": [
+      {
+        "name": "The Evidence Field Rule",
+        "body": "Use the pale green field to group linked professional evidence; keep career entries on the paper canvas, separated by rules.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Use Manrope for headings and the identity mark; use Public Sans for prose, metadata, navigation, and actions.",
+        "section": "typography"
+      },
+      {
+        "name": "The Screenshot Lift Rule",
+        "body": "Reserve the soft shadow for the actual product screenshot; editorial rows and evidence fields remain flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do reuse the homepage tokens and preserve the separate CV and LaterTabs styling boundaries.",
+      "Do keep actions readable, with visible focus and at least the existing 44px link or 48px button target height.",
+      "Do use real product imagery and record its provenance.",
+      "Do preserve native anchors and honor reduced motion."
+    ],
+    "donts": [
+      "Don't apply this homepage system to the CV or LaterTabs routes without a separate decision.",
+      "Don't replace open ruled rows with a repeated floating-card treatment.",
+      "Don't use the product screenshot shadow on ordinary text containers."
+    ]
+  }
+}

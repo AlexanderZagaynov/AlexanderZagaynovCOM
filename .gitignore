@@ -148,3 +148,9 @@ output/
 
 # Playwright files
 .playwright-cli/
+
+# Local design review artifacts and tool state
+.impeccable/review/
+.impeccable/directions/
+.impeccable/critique/
+.impeccable/hook.cache.json

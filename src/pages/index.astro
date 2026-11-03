@@ -1,5 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
+import DirectionArrow from '../components/DirectionArrow.astro'
+import HomeLayout from '../layouts/HomeLayout.astro'
 import {
   chromeWebStoreUrl,
   contactEmail,
@@ -43,97 +44,150 @@ const schema = [
 ]
 ---
 
-<BaseLayout title="Alexander Zagaynov - Lead Software Engineer" description={description} schema={schema}>
-  <section class="hero personal-hero shell home-section">
-    <div class="hero-copy">
-      <h1>Alexander Zagaynov</h1>
-      <p class="lead">
-        Lead Software Engineer building and modernizing production systems
-        across enterprise, fintech, and cloud environments.
+<HomeLayout title="Alexander Zagaynov — Lead Software Engineer" description={description} schema={schema}>
+  <section class="introduction page-width" aria-labelledby="introduction-title">
+    <div class="introduction-copy">
+      <h1 id="introduction-title">Making complex<br class="desktop-break" /> systems easier<br class="desktop-break" /> to change.</h1>
+      <p class="introduction-role">Alexander Zagaynov · Lead Software Engineer</p>
+      <p class="introduction-description">
+        I modernize enterprise software, resolve production problems,
+        and build the cloud integrations that keep systems moving.
       </p>
-      <div class="actions">
-        <a class="button primary" href={path('/cv/')}>View CV</a>
-        <a class="button" href={`mailto:${contactEmail}`}>Contact</a>
+      <div class="action-row">
+        <a class="btn btn-primary" href={path('/cv/')}>View my CV <DirectionArrow /></a>
+        <a class="contact-link" href={`mailto:${contactEmail}`}>Get in touch <DirectionArrow /></a>
+      </div>
+      <div class="profile-links">
+        <a href={githubUrl}>GitHub</a>
+        <a href={linkedInUrl}>LinkedIn</a>
       </div>
     </div>
-    <aside class="hero-panel" aria-label="Engineering profile summary">
-      <dl class="signal-list">
-        <div>
-          <dt>Experience</dt>
-          <dd>25+ years</dd>
-        </div>
-        <div>
-          <dt>Focus</dt>
-          <dd>Modernization, reliability, security, CI/CD</dd>
-        </div>
-        <div>
-          <dt>Current role</dt>
-          <dd>Lead Software Engineer at AT&amp;T</dd>
-        </div>
-      </dl>
+    <aside class="evidence-index" aria-labelledby="evidence-title">
+      <h2 id="evidence-title">A few things<br /> I’ve worked on.</h2>
+      <a class="evidence-link" href="#att">
+        <span class="evidence-company">AT&amp;T</span>
+        <span class="evidence-summary">Modernizing enterprise applications</span>
+        <span class="evidence-detail">Spring Boot 2 → 4 · Vue 2 → 3</span>
+        <span class="evidence-arrow"><DirectionArrow down /></span>
+      </a>
+      <a class="evidence-link" href="#epam">
+        <span class="evidence-company">EPAM Systems</span>
+        <span class="evidence-summary">Getting production back on track</span>
+        <span class="evidence-detail">Incident resolution · Banking integrations</span>
+        <span class="evidence-arrow"><DirectionArrow down /></span>
+      </a>
+      <a class="evidence-link" href="#redhat">
+        <span class="evidence-company">Red Hat</span>
+        <span class="evidence-summary">Connecting cloud platforms</span>
+        <span class="evidence-detail">AWS STS · ManageIQ · OpenShift QE</span>
+        <span class="evidence-arrow"><DirectionArrow down /></span>
+      </a>
     </aside>
   </section>
 
-  <section id="about" class="section shell about-section home-section" data-home-section>
-    <div class="section-kicker">About</div>
-    <div class="section-layout">
-      <div>
-        <h2>Systems work that respects production reality.</h2>
-      </div>
-      <div class="prose-lite">
-        <p>
-          I work hands-on across backend, frontend, and infrastructure, with a
-          bias toward reducing operational risk and making legacy systems easier
-          to change. My recent work includes Java/Kotlin and Vue modernization,
-          identity integration with Microsoft Entra ID, security hardening,
-          production incident resolution, and Azure DevOps CI/CD delivery.
-        </p>
-        <p>
-          Earlier roles at EPAM, Red Hat, Mamapedia, and independent consulting
-          gave me a broad base across banking platforms, open-source cloud
-          systems, Rails applications, ERP/WMS/CRM implementations, and
-          enterprise infrastructure.
-        </p>
-      </div>
+  <section id="about" class="perspective page-width" aria-labelledby="perspective-title">
+    <h2 id="perspective-title">Hands-on engineering.<br /> Production perspective.</h2>
+    <div>
+      <p>More than 25 years across software and infrastructure, from enterprise
+        business systems to banking platforms and open-source cloud software.</p>
+      <p>I work across backend, frontend, and delivery infrastructure. The common
+        thread is making existing systems more reliable, secure, and easier to evolve.</p>
     </div>
   </section>
 
-  <section id="projects" class="section shell projects-section home-section" data-home-section>
-    <div class="section-heading-row">
-      <div>
-        <div class="section-kicker">Projects</div>
-        <!-- <h2>Selected work and local-first tools.</h2> -->
-      </div>
+  <section id="experience" class="experience page-width" aria-labelledby="experience-title">
+    <div class="section-heading">
+      <h2 id="experience-title">Experience, in practice.</h2>
+      <a class="text-link" href={path('/cv/')}>Full experience &amp; skills <DirectionArrow /></a>
     </div>
+    <article id="att" class="experience-row">
+      <div class="experience-context">
+        <h3>AT&amp;T</h3>
+        <p>Lead Software Engineer</p>
+        <p class="experience-period">Oct 2023 — Present</p>
+      </div>
+      <div class="experience-content">
+        <h4>Modernization with production in mind.</h4>
+        <p>Hands-on modernization and support of two large enterprise applications
+          across Java/Kotlin, Spring Boot, Vue.js, and TypeScript.</p>
+        <ul>
+          <li>Migrated major applications from Spring Boot 2 to 4 and Vue 2 to 3; modernized three legacy Python services.</li>
+          <li>Integrated Microsoft Entra ID, strengthened TLS/PKI and WAF-related security, and designed Azure DevOps CI/CD pipelines.</li>
+        </ul>
+      </div>
+    </article>
+    <article id="epam" class="experience-row">
+      <div class="experience-context">
+        <h3>EPAM Systems</h3>
+        <p>Lead Software Engineer</p>
+        <p class="experience-period">Apr 2020 — May 2023</p>
+      </div>
+      <div class="experience-content">
+        <h4>Solving problems in live banking systems.</h4>
+        <p>Engineering, SRE, integration, and production support for a European
+          banking platform vendor and two live banks.</p>
+        <ul>
+          <li>Resolved critical incidents across dozens of Ruby and Java microservices, including one approximately 100× speedup.</li>
+          <li>Delivered PSD2 integrations and modernized Rails services and delivery pipelines.</li>
+        </ul>
+      </div>
+    </article>
+    <article id="redhat" class="experience-row">
+      <div class="experience-context">
+        <h3>Red Hat</h3>
+        <p>Software Engineer</p>
+        <p class="experience-period">Dec 2016 — Jan 2020</p>
+      </div>
+      <div class="experience-content">
+        <h4>Cloud engineering, in the open.</h4>
+        <p>Contributed to OpenShift QE and the ManageIQ hybrid cloud platform,
+          working across code, reviews, and upstream collaboration.</p>
+        <ul>
+          <li>Built test frameworks and led AWS STS integration.</li>
+          <li>Upgraded SDKs and contributed to AWS, Azure, and GCP integrations.</li>
+        </ul>
+      </div>
+    </article>
+    <div class="earlier-work">
+      <p>Previously: Rails platform modernization at Mamapedia; ERP, WMS, CRM, and enterprise infrastructure consulting.</p>
+      <a class="text-link" href={path('/cv/')}>Read the full CV <DirectionArrow /></a>
+    </div>
+  </section>
 
-    <article class="project-feature">
-      <div class="project-copy">
-        <img
-          class="project-icon"
-          src={path('/assets/icons/latertabs-icon128.png')}
-          width="128"
-          height="128"
-          alt=""
-        />
+  <section id="work" class="selected-work page-width" aria-labelledby="work-title">
+    <div class="section-heading">
+      <h2 id="work-title">Software of my own.</h2>
+      <span class="section-note">Outside the enterprise</span>
+    </div>
+    <article id="projects" class="project-layout">
+      <div class="project-description">
+        <img src={path('/assets/icons/latertabs-icon128.png')} width="48" height="48" alt="" loading="lazy" />
         <h3>LaterTabs</h3>
-        <p>
-          A local-first Chrome extension for saving open tabs, restoring tab
-          sessions, and searching saved browser context without accounts,
-          analytics, or a backend.
-        </p>
-        <div class="actions">
-          <a class="button primary" href={path('/latertabs/')}>View project</a>
-          <a class="button" href={chromeWebStoreUrl}>Chrome Web Store</a>
+        <p>Save the tabs. Keep the context.</p>
+        <p>A local-first Chrome extension for saving browser sessions,
+          finding saved tabs, and restoring them when you need them.</p>
+        <p class="project-principle">No account. No analytics. No backend.</p>
+        <div class="action-row">
+          <a class="text-link" href={path('/latertabs/')}>Explore LaterTabs <DirectionArrow /></a>
+          <a class="text-link" href={chromeWebStoreUrl}>Chrome Web Store <DirectionArrow /></a>
         </div>
       </div>
-      <figure class="project-media">
-        <img
-          src={path('/assets/promotional/latertabs-marquee-1400x560.png')}
-          width="1400"
-          height="560"
-          alt="LaterTabs promotional graphic showing browser tabs saved into organized sessions"
-        />
+      <figure class="product-preview">
+        <img src={path('/assets/screenshots/latertabs-3-search.png')} width="487" height="605"
+          alt="LaterTabs popup with a saved-session search and controls to restore browser tabs" loading="lazy" />
+        <figcaption>The actual extension. Your sessions stay in your browser.</figcaption>
       </figure>
     </article>
   </section>
-</BaseLayout>
+
+  <section class="contact-section page-width" aria-labelledby="contact-title">
+    <div>
+      <h2 id="contact-title">Let’s talk engineering.</h2>
+      <p>For a closer look at my experience, start with the CV.<br /> For a conversation, send me an email.</p>
+    </div>
+    <div class="contact-actions">
+      <a class="btn" href={path('/cv/')}>View my CV <DirectionArrow /></a>
+      <a class="text-link" href={`mailto:${contactEmail}`}>{contactEmail}</a>
+    </div>
+  </section>
+</HomeLayout>
