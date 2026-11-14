@@ -30,6 +30,15 @@
         ],
         "createdAt": "2026-11-03T21:21:16.745Z",
         "reason": "Pre-existing .lt-notice marks the support Troubleshooting block. The homepage-only redesign and LaterTabs analytics removal intentionally preserve this separate functional notice styling."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "georgia",
+        "files": [
+          "src/styles/global.css"
+        ],
+        "createdAt": "2026-11-14T09:25:50.503Z",
+        "reason": "Agent verified DESIGN.md explicitly scopes typography to HomeLayout and preserves independent CV styles; Georgia is used by the CV global stylesheet."
       }
     ]
   }
