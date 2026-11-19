@@ -3,7 +3,9 @@
   the container. Until the visitor accepts analytics in the cookie banner
   (ConsentBanner.astro), every consent signal is denied: Google Analytics sets
   no cookies and sends only cookieless pings. The default must be set before
-  the container loads, so it is read here from the stored choice.
+  the container loads, so it is read here from the stored choice. In
+  production the container itself is served through Cloudflare's Google tag
+  gateway, which injects its loader into every page of the zone.
 -->
 <script is:inline>
   (function (w, d, s, l, i) {
@@ -25,6 +27,15 @@
       ad_personalization: 'denied',
     });
     w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    // Cloudflare's Google tag gateway injects its own first-party loader
+    // (/gtag/) ahead of this script and lists the container in
+    // google_tags_first_party; loading gtm.js from Google as well would fetch
+    // the container twice. Without the gateway (local preview, or gateway
+    // off) the container is loaded from Google as usual.
+    var firstParty = w.google_tags_first_party;
+    if (firstParty && firstParty.indexOf && firstParty.indexOf(i) !== -1) {
+      return;
+    }
     var f = d.getElementsByTagName(s)[0],
       j = d.createElement(s),
       dl = l != 'dataLayer' ? '&l=' + l : '';
