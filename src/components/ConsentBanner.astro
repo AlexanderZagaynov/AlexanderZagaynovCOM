@@ -1,0 +1,227 @@
+---
+/**
+ * The cookie banner for Google Analytics. It is shown until the visitor
+ * chooses; the choice is kept in this browser's local storage under
+ * `consent.analytics` ("granted" or "denied"), which GoogleTag.astro reads to
+ * set the Consent Mode default. Any element with `data-consent-open`, such as
+ * the footer's "Cookie settings" button, opens the banner again.
+ *
+ * It uses the homepage tokens from DESIGN.md on every route, including the CV
+ * and LaterTabs pages, so the styles are scoped and self-contained.
+ */
+---
+
+<section class="az-consent" id="consent" aria-labelledby="consent-title" hidden>
+  <h2 id="consent-title">Analytics cookies</h2>
+  <p>
+    This site uses Google Analytics to see which pages people read. With your permission it sets
+    analytics cookies; without it, Google receives only cookieless, anonymous signals.{' '}
+    <a href="https://policies.google.com/technologies/partner-sites">How Google uses this data</a>
+  </p>
+  <div class="az-consent-actions">
+    <button type="button" class="az-consent-accept" data-consent="granted">Accept analytics</button>
+    <button type="button" class="az-consent-reject" data-consent="denied">Reject</button>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var banner = document.getElementById('consent');
+    if (!banner) {
+      return;
+    }
+    var KEY = 'consent.analytics';
+
+    function stored() {
+      try {
+        var value = localStorage.getItem(KEY);
+        return value === 'granted' || value === 'denied' ? value : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    /** Removes Google Analytics cookies after the visitor rejects them. */
+    function clearAnalyticsCookies() {
+      var names = document.cookie
+        .split(';')
+        .map(function (pair) {
+          return pair.split('=')[0].trim();
+        })
+        .filter(function (name) {
+          return name === '_ga' || name.indexOf('_ga_') === 0 || name === '_gid';
+        });
+      var parts = location.hostname.split('.');
+      names.forEach(function (name) {
+        document.cookie = name + '=; Max-Age=0; path=/';
+        for (var index = 0; index < parts.length - 1; index += 1) {
+          document.cookie =
+            name + '=; Max-Age=0; path=/; domain=.' + parts.slice(index).join('.');
+        }
+      });
+    }
+
+    function choose(value) {
+      try {
+        localStorage.setItem(KEY, value);
+      } catch (error) {
+        // Without storage the banner shows again on the next page.
+      }
+      banner.hidden = true;
+      if (value === 'denied') {
+        clearAnalyticsCookies();
+      }
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', { analytics_storage: value });
+      }
+    }
+
+    banner.querySelectorAll('button[data-consent]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        choose(button.getAttribute('data-consent'));
+      });
+    });
+    document.querySelectorAll('[data-consent-open]').forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        banner.hidden = false;
+        banner.querySelector('button[data-consent]').focus();
+      });
+    });
+
+    if (!stored()) {
+      banner.hidden = false;
+    }
+  })();
+</script>
+
+<style>
+  .az-consent {
+    --consent-paper: #f7f5ef;
+    --consent-ink: #202c26;
+    --consent-muted: #526056;
+    --consent-field: #e5eadf;
+    --consent-border: #c8cfc3;
+    --consent-forest: #335c45;
+    --consent-forest-hover: #274a36;
+    --consent-white: #ffffff;
+
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 50;
+    box-sizing: border-box;
+    width: min(400px, calc(100% - 48px));
+    padding: 24px 24px 24px;
+    border: 1px solid var(--consent-border);
+    background: var(--consent-field);
+    color: var(--consent-ink);
+    font-family: 'Public Sans Variable', 'Public Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    text-align: left;
+  }
+
+  .az-consent[hidden] {
+    display: none;
+  }
+
+  .az-consent::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin-bottom: 16px;
+    background: var(--consent-forest);
+  }
+
+  .az-consent h2 {
+    margin: 0 0 8px;
+    color: var(--consent-ink);
+    font-family: 'Manrope Variable', 'Manrope', system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .az-consent p {
+    margin: 0 0 24px;
+    color: var(--consent-muted);
+  }
+
+  .az-consent a {
+    color: var(--consent-ink);
+    text-decoration: underline;
+    text-underline-offset: 0.24em;
+  }
+
+  .az-consent a:hover {
+    color: var(--consent-forest);
+  }
+
+  .az-consent-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .az-consent-actions button {
+    min-height: 48px;
+    padding: 0 22px;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    transition:
+      background-color 160ms ease-out,
+      border-color 160ms ease-out;
+  }
+
+  .az-consent-accept {
+    background: var(--consent-forest);
+    color: var(--consent-white);
+  }
+
+  .az-consent-accept:hover {
+    background: var(--consent-forest-hover);
+  }
+
+  .az-consent-reject {
+    border-color: var(--consent-border);
+    background: var(--consent-paper);
+    color: var(--consent-ink);
+  }
+
+  .az-consent-reject:hover {
+    border-color: var(--consent-ink);
+  }
+
+  .az-consent a:focus-visible,
+  .az-consent-actions button:focus-visible {
+    outline: 3px solid var(--consent-forest);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 760px) {
+    .az-consent {
+      right: 16px;
+      bottom: 16px;
+      width: calc(100% - 32px);
+      padding: 20px;
+    }
+
+    .az-consent-actions button {
+      padding: 0 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .az-consent-actions button {
+      transition: none;
+    }
+  }
+</style>

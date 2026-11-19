@@ -174,6 +174,10 @@ A flat tinted field with a short forest rule and stacked ruled links. Each link 
 
 Career rows pair context with contribution prose and native bullet lists, bounded by top rules. The product preview uses the preview field and a centered, constrained screenshot with the sole soft shadow. No input, chip, modal, or general-purpose card is established by this homepage.
 
+### Cookie Banner
+
+`src/components/ConsentBanner.astro` is the one homepage component shown on every route, including the CV and LaterTabs pages, by the owner's decision: a fixed evidence field with the short forest rule, a title-role heading, muted body text, and equal-height primary ("Accept analytics") and paper-filled secondary ("Reject") buttons. Its styles are scoped and carry their own copies of the tokens, so the other routes' styles stay independent; where the homepage fonts are not loaded it falls back to the system sans. "Cookie settings" in each footer reopens it.
+
 ## Do's and Don'ts
 
 ### Do:

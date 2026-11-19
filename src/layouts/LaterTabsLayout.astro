@@ -1,4 +1,5 @@
 ---
+import ConsentBanner from '../components/ConsentBanner.astro'
 import GoogleTag from '../components/GoogleTag.astro'
 import { chromeWebStoreUrl, pathWithTrailingSlash } from '../lib/links'
 import '../styles/latertabs.css'
@@ -118,8 +119,10 @@ const navItems = [
           <a href={path('/latertabs/support/')}>Support</a>
           <a href={path('/latertabs/privacy/')}>Privacy</a>
           <a href="mailto:zalex80@gmail.com">Contact</a>
+          <a href="#consent" data-consent-open>Cookie settings</a>
         </nav>
       </div>
     </footer>
+    <ConsentBanner />
   </body>
 </html>

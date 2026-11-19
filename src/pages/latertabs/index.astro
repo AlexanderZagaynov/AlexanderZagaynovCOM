@@ -82,7 +82,7 @@ const schema = [
         </div>
         <div>
           <strong>Clean</strong>
-          <span>No account or analytics</span>
+          <span>No account or in-extension analytics</span>
         </div>
       </div>
     </div>
@@ -184,13 +184,15 @@ const schema = [
     <div class="lt-split">
       <div>
         <div class="lt-section-kicker">Data posture</div>
-        <h2>No accounts, analytics, or backend.</h2>
+        <h2>An extension with no accounts, analytics, or backend.</h2>
       </div>
       <div class="lt-panel">
         <p>
           Saved sessions live in your browser's IndexedDB. Small extension
           settings live in Chrome extension storage. LaterTabs does not send
           saved sessions, telemetry, analytics, or usage data to external services.
+          This website, unlike the extension, uses Google Analytics after you
+          accept analytics cookies.
         </p>
         <div class="lt-actions">
           <a class="lt-button lt-button-secondary" href={path('/latertabs/support/')}>Support</a>

@@ -1,5 +1,6 @@
 ---
 import AzMark from '../components/AzMark.astro'
+import ConsentBanner from '../components/ConsentBanner.astro'
 import GoogleTag from '../components/GoogleTag.astro'
 import { pathWithTrailingSlash } from '../lib/links'
 import '../styles/global.css'
@@ -118,8 +119,10 @@ const navItems = [
           <a href={path('/cv/')}>CV</a>
           <a href={path('/latertabs/')}>LaterTabs</a>
           <a href="mailto:zalex80@gmail.com">Email</a>
+          <a href="#consent" data-consent-open>Cookie settings</a>
         </div>
       </div>
     </footer>
+    <ConsentBanner />
   </body>
 </html>

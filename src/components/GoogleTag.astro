@@ -1,7 +1,29 @@
-<!-- Google Tag Manager. Analytics properties are connected inside the container. -->
+<!--
+  Google Tag Manager in Consent Mode. Analytics properties are connected inside
+  the container. Until the visitor accepts analytics in the cookie banner
+  (ConsentBanner.astro), every consent signal is denied: Google Analytics sets
+  no cookies and sends only cookieless pings. The default must be set before
+  the container loads, so it is read here from the stored choice.
+-->
 <script is:inline>
   (function (w, d, s, l, i) {
     w[l] = w[l] || [];
+    // gtag() must push the arguments object itself; Consent Mode reads it.
+    w.gtag = function () {
+      w[l].push(arguments);
+    };
+    var choice = null;
+    try {
+      choice = w.localStorage.getItem('consent.analytics');
+    } catch (error) {
+      // Without storage the visitor is treated as not having chosen.
+    }
+    w.gtag('consent', 'default', {
+      analytics_storage: choice === 'granted' ? 'granted' : 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
     w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
     var f = d.getElementsByTagName(s)[0],
       j = d.createElement(s),
